@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * Ahmet Kadir Zeybek - azeybek
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -166,7 +166,7 @@ NOTES:
  *   Rating: 1
  */
 int isZero(int x) {
-  return 2;
+  return !x;
 }
 /* 
  * implication - return x -> y in propositional logic - 0 for false, 1
@@ -178,7 +178,7 @@ int isZero(int x) {
  *   Rating: 2
  */
 int implication(int x, int y) {
-    return 2;
+    return (!x)|y;
 }
 /* 
  * twoDigitNumberInBaseFour - return integer equivalent of (xy)_4 two digit number in base 4
