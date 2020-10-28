@@ -188,7 +188,7 @@ int implication(int x, int y) {
  *   Rating: 2
  */
 unsigned twoDigitNumberInBaseFour(unsigned x, unsigned y) {
-  return 2;
+  return (x << 2)+y;
 }
 /*
  * multThreeEighths - multiplies by 3/8 rounding toward 0.
@@ -201,7 +201,12 @@ unsigned twoDigitNumberInBaseFour(unsigned x, unsigned y) {
  *   Rating: 3
  */
 int multThreeEighths(int x) {
-  return 2;
+  int mult= x + x + x;
+  int val= mult >> 3;
+  int negorpos= x >> 31;
+  int addit= (~negorpos)+1;
+  int last= !(!(val & 7));
+  return val + (addit & last);
 }
 /* 
  * bang - Compute !x without using !
@@ -210,7 +215,7 @@ int multThreeEighths(int x) {
  *   Max ops: 12
  *   Rating: 4 
  */
-int bang(int x) {
+int bang(int x) { 
   return 2;
 }
 /* 
@@ -220,7 +225,7 @@ int bang(int x) {
  *   Rating: 1
  */
 int tmax(void) {
-  return 2;
+  return ~(1 << 31);
 }
 /* 
  * isOppositeSigns - if x and y has different signs then return 1, else return 0 
@@ -231,7 +236,9 @@ int tmax(void) {
  *   Rating: 3
  */
 int isOppositeSigns(int x, int y) {
-  return 2;
+  int mx= x >> 31;
+  int my= y >> 31;
+  return !(!(mx^my));
 }
 /* 
  * conditional - same as x ? y : z 
@@ -241,7 +248,8 @@ int isOppositeSigns(int x, int y) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-  return 2;
+  int nonzero= !(!(x));	
+  return ;
 }
 /* 
  * float_abs - Return bit-level equivalent of absolute value of f for
